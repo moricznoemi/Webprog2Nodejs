@@ -20,5 +20,3 @@ Tanösvények
 7. CRUD menü 📥
 8. OOP-Javascript menü 📝
 
-# 🛠️ A fejlesztés lépései 🛠️
-Teszt másik felhasználóhoz
