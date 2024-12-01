@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+            <!-- Main -->
+            <div id="main">
+
+                <section class="post">
+                    <header class="major">
+                        <h2>Üzenetek</h2>
+                        <p>Itt láthatóak a kapcsolat oldalról küldött üzenetek.</p>
+                    </header>
+
+                    <!-- Content -->
+                    <section id="content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Név</th>
+                                    <th>E-mail cím</th>
+                                    <th>Üzenet</th>
+                                    <th>Elküldve:</th>
+                                </tr>
+                            </thead>
+                            <tbody id="message-table-body">
+                                <% uzenetek.forEach(function(message) { %>
+                                    <tr>
+                                        <td><%= message.nev %></td>
+                                        <td><%= message.email %></td>
+                                        <td><%= message.uzenet %></td>
+                                        <td><%= new Date(message.timestamp).toLocaleString() %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </section>
+
+                </section>
+
+            </div>
+
+            <%- include('partials/footer') %>
