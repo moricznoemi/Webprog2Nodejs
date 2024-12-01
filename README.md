@@ -2,7 +2,7 @@
 
 ## A feladatról: ##
 Ebben a projektben egy Node.js alapú webes alkalmazást kellett készítenem. Az oldal és az adatbázis választott témája a Tanösvények.
-Az oldal reszponzív témát felhasználva készült el, melyet a HTML5UP oldalról szereztem be.
+Az oldalhoz reszponzív témát kellett használnom, melyet a HTML5UP oldalról választottam.
 
 ## Készítette: ##
 Móricz Noémi (BVARSQ)
