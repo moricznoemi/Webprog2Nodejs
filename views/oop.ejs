@@ -1,0 +1,124 @@
+<%- include('partials/header') %>
+
+           <!-- Main -->
+<div id="main" class="wrapper style1">
+    <div class="container">
+        <header class="major">
+            <h2>Tanösvények és Állomásaik</h2>
+            <p>Egyszerű példák az Objektum-orientált JavaScript alkalmazásával a tanösvények és azok állomásainak bemutatására.</p>
+        </header>
+
+        <!-- Content -->
+        <section id="content">
+            <h3>Tanösvények és Típusai</h3>
+            <div id="trail-output"></div>
+
+            <script>
+                // Alaposztály: Tanosveny
+                class Tanosveny {
+                    constructor(nev, hosszusag) {
+                        this.nev = nev;
+                        this.hosszusag = hosszusag;
+                    }
+
+                    bemutatkozas() {
+                        return `A ${this.nev} tanösvény hossza ${this.hosszusag} km.`;
+                    }
+                }
+
+                // Alosztály: KalandosTanosveny
+                class KalandosTanosveny extends Tanosveny {
+                    constructor(nev, hosszusag, nehezseg) {
+                        super(nev, hosszusag);
+                        this.nehezseg = nehezseg;
+                    }
+
+                    leiras() {
+                        return `A ${this.nev} tanösvény ${this.nehezseg} nehézségi fokú.`;
+                    }
+                }
+
+                // Alosztály: TermeszetJaroTanosveny
+                class TermeszetJaroTanosveny extends Tanosveny {
+                    constructor(nev, hosszusag, erdofajta) {
+                        super(nev, hosszusag);
+                        this.erdofajta = erdofajta;
+                    }
+
+                    bemutatas() {
+                        return `A ${this.nev} tanösvény az ${this.erdofajta} erdőben található.`;
+                    }
+                }
+
+                // Példányosítás
+                const kalandosTanosveny = new KalandosTanosveny('Felső-hegyi túra', 12, 'közepes');
+                const termeszetJaroTanosveny = new TermeszetJaroTanosveny('Bükkaljai természetjáró', 15, 'tölgyes');
+
+                // Eredmények megjelenítése
+                const trailOutput = document.getElementById('trail-output');
+                trailOutput.innerHTML = `
+                    <p>${kalandosTanosveny.bemutatkozas()}</p>
+                    <p>${kalandosTanosveny.leiras()}</p>
+                    <p>${termeszetJaroTanosveny.bemutatkozas()}</p>
+                    <p>${termeszetJaroTanosveny.bemutatas()}</p>
+                `;
+            </script>
+
+            <h3>Állomások és Tevékenységeik</h3>
+            <div id="station-output"></div>
+
+            <script>
+                // Alaposztály: Allomas
+                class Allomas {
+                    constructor(nev, tipus) {
+                        this.nev = nev;
+                        this.tipus = tipus;
+                    }
+
+                    tevekenyseg() {
+                        return `${this.nev} állomáson ${this.tipus} tevékenység zajlik.`;
+                    }
+                }
+
+                // Alosztály: PihenőAllomas
+                class PihenoAllomas extends Allomas {
+                    constructor(nev, tipus, hely) {
+                        super(nev, tipus);
+                        this.hely = hely;
+                    }
+
+                    leiras() {
+                        return `${this.nev} pihenőállomás található a(z) ${this.hely} helyszínen.`;
+                    }
+                }
+
+                // Alosztály: KilatoAllomas
+                class KilatoAllomas extends Allomas {
+                    constructor(nev, tipus, magassag) {
+                        super(nev, tipus);
+                        this.magassag = magassag;
+                    }
+
+                    leiras() {
+                        return `${this.nev} kilátóállomás ${this.magassag} méteres magasságban helyezkedik el.`;
+                    }
+                }
+
+                // Példányosítás
+                const pihenoAllomas = new PihenoAllomas('Tavaszi Pihenő', 'pihenés', 'patakpart');
+                const kilatoAllomas = new KilatoAllomas('Nagy-hegyi Kilátó', 'kilátás', 450);
+
+                // Eredmények megjelenítése
+                const stationOutput = document.getElementById('station-output');
+                stationOutput.innerHTML = `
+                    <p>${pihenoAllomas.tevekenyseg()}</p>
+                    <p>${pihenoAllomas.leiras()}</p>
+                    <p>${kilatoAllomas.tevekenyseg()}</p>
+                    <p>${kilatoAllomas.leiras()}</p>
+                `;
+            </script>
+        </section>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,73 @@
+<%- include('partials/header') %>
+
+        <!-- Main -->
+        <div id="main" class="wrapper style1">
+            <div class="container">
+                <header class="major">
+                    <h2>CRUD műveletek</h2>
+                    <p>Itt CRUD műveleteket hajthatunk végre az adatbázis 'telepules' tábláján.</p>
+                </header>
+
+                <!-- Content -->
+                <section id="crud-container">
+                    <button onclick="createRecord()">Rekord hozzáadása</button>
+                    <table id="crud-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Település neve</th>
+                                <th>Nemzeti Park ID</th>
+                                <th>Műveletek</th>
+                            </tr>
+                        </thead>
+                        <tbody id="crud-table-body">
+                            <!-- Rekordok itt kerülnek dinamikusan megjelenítésre -->
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Create Dialog -->
+                <dialog id="create-dialog">
+                    <form id="create-form" onsubmit="event.preventDefault(); createRecordFromForm()">
+                        <label for="nev">Település neve:</label>
+                        <input type="text" id="nev" name="nev" required>
+                        <br />
+                        <label for="npid">Nemzeti Park ID:</label>
+                        <input type="number" id="npid" name="npid" required>
+                        <br />
+                        <button type="submit">Hozzáad</button>
+                        <button type="button" onclick="document.getElementById('create-dialog').close()">Mégse</button>
+                    </form>
+                </dialog>
+
+                <!-- Edit Dialog -->
+                <dialog id="edit-dialog">
+                    <form id="edit-form" onsubmit="event.preventDefault(); updateRecordFromForm()">
+                        <input type="hidden" id="id" name="id" required>
+                        <label for="nev">Település neve:</label>
+                        <input type="text" id="nev" name="nev">
+                        <br />
+                        <label for="npid">Nemzeti Park ID:</label>
+                        <input type="number" id="npid" name="npid">
+                        <br />
+                        <button type="submit">Rekord frissítése</button>
+                        <button type="button" onclick="document.getElementById('edit-dialog').close()">Mégse</button>
+                    </form>
+                </dialog>
+
+                <!-- Delete Dialog -->
+                <dialog id="delete-dialog">
+                    <form id="delete-form" onsubmit="event.preventDefault(); deleteRecordFromForm()">
+                        <input type="hidden" id="delete-id" name="id" required>
+                        <p>Biztosan törölni szeretné ezt a rekordot?</p>
+                        <button type="submit" class="delete-button">Törlés</button>
+                        <button type="button" onclick="document.getElementById('delete-dialog').close()">Mégse</button>
+                    </form>
+                </dialog>
+
+                <script src="assets/crudhelper.js"></script>
+
+            </div>
+        </div>
+
+        <%- include('partials/footer') %>

@@ -1,0 +1,107 @@
+<%- include('partials/header') %>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul class="links">
+                    <li><a href="/">Főoldal</a></li>
+							<li><a href="/database" class="active">Adatbázis</a></li>
+							<li><a href="/contact">Kapcsolat</a></li>
+							<li><a href="/messages">Üzenetek</a></li>
+							<li><a href="/crud">CRUD</a></li>
+							<li><a href="/oop">OO-Javascript</a></li>
+                </ul>
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Main -->
+            <div id="main">
+
+                <section class="post">
+                    <header class="major">
+                        <h2>Adatbázis menü</h2>
+                        <p>A választott adatbázis 3 táblájának a rekordjainak megjelenítése, 15-re limitálva.</p>
+                    </header>
+
+                    <!-- NP (Nemzeti Park) tábla megjelenítése -->
+                    <section id="np-table">
+                        <h3>Nemzeti Park tábla</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Név</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% np.forEach(function(row) { %>
+                                    <tr>
+                                        <td><%= row.id %></td>
+                                        <td><%= row.nev %></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- TELEPÜLÉS tábla megjelenítése -->
+                    <section id="telepules-table">
+                        <h3>Település tábla</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Név</th>
+                                    <th>Nemzeti Park ID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% telepules.forEach(function(row) { %>
+                                    <tr>
+                                        <td><%= row.id %></td>
+                                        <td><%= row.nev %></td>
+                                        <td><%= row.npid %></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <!-- ÚT tábla megjelenítése -->
+                    <section id="ut-table">
+                        <h3>Út tábla</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Név</th>
+                                    <th>Hossz (km)</th>
+                                    <th>Kezdő Település</th>
+                                    <th>Vég Település</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% ut.forEach(function(row) { %>
+                                    <tr>
+                                        <td><%= row.id %></td>
+                                        <td><%= row.nev %></td>
+                                        <td><%= row.hossz %></td>
+                                        <td><%= row.kezdotelepid %></td>
+                                        <td><%= row.vegtelepid %></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </section>
+
+                </section>
+
+            </div>
+
+            <%- include('partials/footer') %>
